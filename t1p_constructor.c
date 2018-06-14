@@ -141,6 +141,10 @@ tbool_t t1p_is_eq(ap_manager_t* man, t1p_t* a, t1p_t* b)
 		res = t1p_aff_is_eq(pr, a->paf[i], b->paf[i]);
 		if (!res) break;
 	    } else {
+		// proposed FIX
+                if (a->paf[i] == b->paf[i]) {
+		    continue;
+                }
 		res = false;
 		break;
 	    }
