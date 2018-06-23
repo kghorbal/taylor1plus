@@ -23,8 +23,8 @@ int main(int argc, char **argv) {
     assert(itv_is_leq(top,top));
     assert(itv_is_leq(bot,bot));
     assert(!itv_is_leq(top,bot));
-    assert(itv_is_leq(bot,itv));
     assert(itv_is_leq(itv,top));
+    assert(itv_is_leq(bot,itv));
     //printf("top <= top? %d \n",itv_is_leq(top,top));
 	return 0;
 }
