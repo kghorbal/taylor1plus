@@ -157,9 +157,9 @@ t1p_t* t1p_meet(ap_manager_t* man, bool destructive, t1p_t* a1, t1p_t* a2)
                 // The following line was missing which caused a double free bug. Detected and fixed by Alexandra-Olimpia Bugariu on May 31st 2018 
                 res->paf[i]->pby++;
             } else {
-                fprintf(stdout, "destructive ? %d\n",destructive);
-                t1p_fprint(stdout, man, a1, 0x0);
-                t1p_fprint(stdout, man, a2, 0x0);
+                //fprintf(stdout, "destructive ? %d\n",destructive);
+                //t1p_fprint(stdout, man, a1, 0x0);
+                //t1p_fprint(stdout, man, a2, 0x0);
                 //not_implemented();
                 /* return a top instead */
                 res->paf[i] = pr->top;
@@ -266,7 +266,7 @@ static inline bool t1p_eval_lincons_array(t1p_internal_t* pr, size_t* hash, t1p_
 		t1p_aaterm_t *p;
 		/* sum->l donne la taille de la forme affine (ne comptabilise pas la constante) */
 		size_t epscons_size = t1p_nsymcons_get_dimension(pr, a);
-		/* au pire tous les symboles de la contrainte seront à rajouter */
+		/* au pire tous les symboles de la contrainte seront ï¿½ rajouter */
 		size_t new = 0;
 		eps_linexpr0->p.linterm = (ap_linterm_t*)malloc(sum->l*sizeof(ap_linterm_t));
 		eps_linexpr0->size = sum->l;
@@ -797,7 +797,7 @@ t1p_t* t1p_join_faux(ap_manager_t* man, bool destructive, t1p_t* a1, t1p_t* a2)
 		res->paf[i]->pby++;
 	    }
 	    size_t k = 0;
-	res->g = (itv_t**)calloc(1+pr->dim,sizeof(itv_t*)); /* centre + au max chaque symbole lui est associé un générateur */
+	res->g = (itv_t**)calloc(1+pr->dim,sizeof(itv_t*)); /* centre + au max chaque symbole lui est associï¿½ un gï¿½nï¿½rateur */
 	res->gn = pr->dim;
 
 	t1p_aaterm_t *p = NULL;
@@ -1176,7 +1176,7 @@ t1p_t* t1p_join_bub(ap_manager_t* man, bool destructive, t1p_t* a1, t1p_t* a2)
     return res;
 }
 
-/* ub avec formule de l'identité du //  */
+/* ub avec formule de l'identitï¿½ du //  */
 /* pour tester le global + drawzonotopes */
 t1p_t* t1p_join_global(ap_manager_t* man, bool destructive, t1p_t* a1, t1p_t* a2)
     /* TODO destructive not used  */
@@ -1312,7 +1312,7 @@ t1p_t* t1p_join_global(ap_manager_t* man, bool destructive, t1p_t* a1, t1p_t* a2
 		res->paf[i]->pby++;
 	    }
 	    size_t k = 0;
-	res->g = (itv_t**)calloc(1+pr->dim,sizeof(itv_t*)); /* centre + au max chaque symbole lui est associé un générateur */
+	res->g = (itv_t**)calloc(1+pr->dim,sizeof(itv_t*)); /* centre + au max chaque symbole lui est associï¿½ un gï¿½nï¿½rateur */
 	res->gn = pr->dim;
 
 	t1p_aaterm_t *p = NULL;
