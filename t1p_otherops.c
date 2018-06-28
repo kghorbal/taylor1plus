@@ -46,7 +46,8 @@ t1p_t* t1p_forget_array(ap_manager_t* man,
         // The field box used for the reduced product was not set. 
         // Detected by Alexandra-Olimpia Bugariu and fixed by Gagandeep Singh on June 7th 2018
         // TODO: Ideally, the box field should be of type abstract0_box to perform the reduced product in a cleaner way 
-        itv_set_top(res->box[i]);
+	    // proposed fix for test7_2.c
+	    if(!t1p_is_bottom(man, a)) itv_set_top(res->box[i]);
 	}
     }
     return res;
