@@ -46,7 +46,8 @@ t1p_t* t1p_forget_array(ap_manager_t* man,
         // The field box used for the reduced product was not set. 
         // Detected by Alexandra-Olimpia Bugariu and fixed by Gagandeep Singh on June 7th 2018
         // TODO: Ideally, the box field should be of type abstract0_box to perform the reduced product in a cleaner way 
-        itv_set_top(res->box[i]);
+	    // proposed fix for test7_2.c and for test29.c
+	    if(!t1p_is_bottom(man, a)) itv_set_top(res->box[tdim[i]]);
 	}
     }
     return res;
@@ -288,7 +289,7 @@ void ap_abstract1_aff_build(ap_manager_t* man, ap_abstract1_t* abstract1, ap_var
     ap_dim_t dim = ap_environment_dim_of_var(abstract1->env,var);
     t1p_t* abs = (t1p_t*)abstract1->abstract0->value;
     itv_set_ap_interval(pr->itv, itv, interval);
-    /* on admet que les formes sont affines autrement dit pas réduite à un intervalle avec une borne infinie */
+    /* on admet que les formes sont affines autrement dit pas rï¿½duite ï¿½ un intervalle avec une borne infinie */
     if (pr->dim <= index) t1p_aff_nsym_create(pr, abs->paf[dim], itv, isunion ? UN : IN);
     else t1p_aff_build(pr, abs->paf[dim], itv, index);
     //if (isunion) abs->paf[dim]->lastu = abs->paf[dim]->end;
